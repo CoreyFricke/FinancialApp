@@ -1,5 +1,7 @@
 package com.example.financialapp
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,7 +24,7 @@ import androidx.navigation.NavController
 
 class LoginScreen{
     @Composable
-    fun FirstScreen(viewModel: LoginScreenViewModel, navController: NavController){
+    fun FirstScreen(viewModel: LoginScreenViewModel, navController: NavController, context: Context){
 
         Column(
             verticalArrangement = Arrangement.Top,
@@ -51,7 +53,7 @@ class LoginScreen{
                     .padding(16.dp),
                 value = viewModel.userInput,
                 onValueChange = {viewModel.userInput = it},
-                label = {Text("Label")}
+                label = {Text("UserNameToCheck")}
             )
             //Counter
             Box(){
@@ -59,7 +61,7 @@ class LoginScreen{
                     modifier = Modifier
                         .padding(16.dp),
                     textAlign = TextAlign.Center,
-                    text = viewModel.MultiplyByTwo().toString(),
+                    text = viewModel.multiplyByTwo().toString(),
                     fontSize = 50.sp,
                     color = Color.Black
                 )
@@ -69,6 +71,22 @@ class LoginScreen{
             }) {
                 Text(
                     text = viewModel.number.toString()
+                )
+            }
+            //CheckDatabase
+            Button(onClick = {
+                Toast.makeText(context, viewModel.checkUserExists(viewModel.userInput), Toast.LENGTH_LONG).show()
+            }) {
+                Text(
+                    text = "Check Database Entry"
+                )
+            }
+            //DeleteUser
+            Button(onClick = {
+                viewModel.deleteUser(viewModel.userInput)
+            }) {
+                Text(
+                    text = "Delete User"
                 )
             }
             //Navigation
