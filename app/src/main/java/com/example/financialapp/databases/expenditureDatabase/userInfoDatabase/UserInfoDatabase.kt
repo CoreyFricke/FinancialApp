@@ -1,4 +1,4 @@
-package com.example.financialapp.Databases
+package com.example.financialapp.databases.expenditureDatabase.userInfoDatabase
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
