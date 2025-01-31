@@ -1,4 +1,4 @@
-package com.example.financialapp.Databases
+package com.example.financialapp.databases.expenditureDatabase.userInfoDatabase
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
